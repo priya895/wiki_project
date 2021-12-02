@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+   New Page
+{% endblock %}
+
+{% block body %}
+  {% if exists %}
+       <h2>page already exixts </h2>
+       <h5>if you want to rewrite:<a href="wiki/{{ entrytitle }}/edit">Yes</a></h5>
+   {% endif %}
+   
+<br>
+<br>
+<form action = "{%url 'newpage'%}" method ="POST">
+   {% csrf_token %}
+   {{form.as_p}}
+   <input type=submit>
+   </form>
+{% endblock %}
